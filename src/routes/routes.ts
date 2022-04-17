@@ -15,25 +15,28 @@ interface Route {
 // const LazyPage1= lazy(()=>import(/* webpackChunkName: "LazyPage1" */ '../01-lazyload/pages/lazyPage1'));
 // const LazyPage2= lazy(()=>import(/* webpackChunkName: "LazyPage2" */ '../01-lazyload/pages/lazyPage2'));
 // const LazyPage3= lazy(()=>import(/* webpackChunkName: "LazyPage3" */ '../01-lazyload/pages/lazyPage3'));
-const LazyLayout= lazy(()=>import(/* webpackChunkName: "LazyLayout"*/ '../01-lazyload/layout/LazyLayout'))
+// const LazyLayout= lazy(()=>import(/* webpackChunkName: "LazyLayout"*/ '../01-lazyload/layout/LazyLayout'));
+const ShoppingPages= lazy(()=>import(/* webpackChunkName: "ShoppingStore"*/ '../02-component-patterns/pages/ShoppingPages'));
+
+// lint-disable-next-line
+// {
+//     to: 'lazy2',
+//     path: 'lazy2',
+//     Component: LazyPage2,
+//     name: 'lazy-2'
+// },
 
 export const routes: Route[] = [
-    {
-        path: '/lazyload/*',
-        to: '/lazyload/',
-        Component: LazyLayout,
-        name: 'lazy'
-    },
-    // {
-    //     to: 'lazy2',
-    //     path: 'lazy2',
-    //     Component: LazyPage2,
-    //     name: 'lazy-2'
-    // },
-    {
-        to: '/no-lazy',
-        path: 'no-lazy',
-        Component: NoLazy,
-        name: 'No Lazy'
-    }
-]
+	{	
+		path: '/shopping/*',
+		to: '/shopping/',
+		Component: ShoppingPages,
+		name: 'shopping'
+	},
+	{
+		to: '/no-lazy',
+		path: 'no-lazy',
+		Component: NoLazy,
+		name: 'No Lazy'
+	}
+];

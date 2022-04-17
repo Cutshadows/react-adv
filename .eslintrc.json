@@ -1,0 +1,31 @@
+{
+	// "extends": ["react-app", "plugin:cypress/recommended"],
+	"rules": {
+		"no-console": 1,
+		"strict": ["error", "global"],
+		"curly": "warn",
+		"indent": [2, "tab"],
+		"quotes": [2, "single", "avoid-escape"],
+		"padding-line-between-statements": [
+			"error",
+			{ "blankLine": "always", "prev": "*", "next": "return" },
+			{
+				"blankLine": "any",
+				"prev": ["const", "let"],
+				"next": ["const", "let"]
+			}
+		],
+		"semi": ["error", "always"],
+		"jsx-a11y/aria-role": [
+			0,
+			{
+				"ignoreNonDOM": true
+			}
+		]
+		// "cypress/no-assigning-return-values": "error",
+		// "cypress/no-unnecessary-waiting": "error",
+		// "cypress/assertion-before-screenshot": "warn",
+		// "cypress/no-force": "warn",
+		// "cypress/no-async-tests": "error"
+	}
+}
