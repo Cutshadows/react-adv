@@ -1,13 +1,16 @@
-import { ProductButtons, ProductImage, ProductTitle} from '../components';
 import {ProductCard} from '../components';
+import { products } from '../data/products';
+import { useShoppingCart } from '../hooks/useShoppingCart';
 import '../styles/components/pages/shopping.component.css';
 
+
+
 const ShoppingPages = () => {
-	const product = {
-		id: '1',
-		title: 'Producto test',
-		img: 'https://w7.pngwing.com/pngs/364/982/png-transparent-python-programming-language-computer-programming-language-angle-text-computer-thumbnail.png'
-	};
+
+	const {
+		onProductOnchange, 
+		shoppingCart 
+	}= useShoppingCart();
 	
 	return (
 		<div  >
@@ -18,17 +21,59 @@ const ShoppingPages = () => {
 				flexDirection: 'row',
 				flexWrap: 'wrap'
 			}} >
-				<ProductCard product={product}  className="bg-dark text-white">
-					<ProductCard.Image img='' className="custom-image" />
-					<ProductCard.Title title={'Café'} className="text-white text-bold"/>
-					<ProductCard.Buttons className="text-white custom-buttons"/>
-					{/* <ProductCard.Buttons increaseBy={function (value:number):void {
-					throw new Error('Function not implemented.');
-					}}
-					counter={0} /> */}
-				</ProductCard>
+				{
+					products.map(product => (
+						<ProductCard 
+							product={product}
+							key={product.id} 
+							className="bg-dark text-white"
+							onChange={onProductOnchange}
+							value={shoppingCart[product.id]?.count || 0}>
+							<ProductCard.Image 
+								img={product.img} 
+								className="custom-image" 
+							/>
+							<ProductCard.Title 
+								title={product.title} 
+								className="text-white text-bold"
+							/>
+							<ProductCard.Buttons 
+								className="text-white custom-buttons"
+							/>
+						</ProductCard>
+					))
+				}
+
+				<div className='shopping-cart'>
+					{
+						Object.entries(shoppingCart).map(([id, product]) => (
+							<ProductCard 
+								product={product} 
+								key={id} 
+								style={{
+									width: '100px'
+								}}
+								value={product.count}
+								onChange={onProductOnchange} 
+								className="bg-dark text-white">
+								<ProductCard.Image 
+									img={product.img} 
+									className="custom-image" 
+								/>
+								<ProductCard.Buttons 
+									className="text-white custom-buttons"
+									style={{
+										display: 'flex',
+										justifyContent: 'center'
+									}}
+								/>
+							</ProductCard>
+						))
+					}
+				</div>
 				
-				<ProductCard product={product} className="bg-dark text-white" >
+				
+				{/* <ProductCard product={product} className="bg-dark text-white" >
 					<ProductImage img=''  className="custom-image"/>
 					<ProductTitle title={'Café'} className="text-white text-bold" />
 					<ProductButtons className="text-white custom-buttons"/>
@@ -44,7 +89,7 @@ const ShoppingPages = () => {
 						display: 'flex',
 						justifyContent: 'end',
 					}}/>
-				</ProductCard>
+				</ProductCard> */}
 			</div>
 		</div>
 	);
