@@ -28,7 +28,8 @@ const ShoppingPages = () => {
 							key={product.id} 
 							className="bg-dark text-white"
 							onChange={onProductOnchange}
-							value={shoppingCart[product.id]?.count || 0}>
+							value={shoppingCart[product.id]?.count || 0}
+						>
 							<ProductCard.Image 
 								img={product.img} 
 								className="custom-image" 
