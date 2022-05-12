@@ -16,6 +16,7 @@ interface Route {
 // const LazyPage2= lazy(()=>import(/* webpackChunkName: "LazyPage2" */ '../01-lazyload/pages/lazyPage2'));
 // const LazyPage3= lazy(()=>import(/* webpackChunkName: "LazyPage3" */ '../01-lazyload/pages/lazyPage3'));
 // const LazyLayout= lazy(()=>import(/* webpackChunkName: "LazyLayout"*/ '../01-lazyload/layout/LazyLayout'));
+
 const ShoppingPages= lazy(()=>import(/* webpackChunkName: "ShoppingStore"*/ '../02-component-state-initializer/pages/ShoppingPages'));
 
 // lint-disable-next-line
