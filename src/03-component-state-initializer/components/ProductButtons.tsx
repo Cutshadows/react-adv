@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { ProductContext } from './ProductCard';
 import styles from '../styles/styles.module.css';
 
@@ -9,7 +9,13 @@ export interface IProps {
 
 export const ProductButtons = ({className, style}: IProps) => {
 	const {ProductState}= useContext(ProductContext);
-	const{increaseBy, counter} = ProductState;
+	const{increaseBy, counter, maxCount} = ProductState;
+
+	const isMaxReached=useCallback(
+	  () => !!maxCount && counter === maxCount, 
+	  [maxCount, counter]
+	);
+	
 
 	return (
 		<div className={`${styles.buttonsContainer} ${className}` } style={style}>
@@ -17,7 +23,7 @@ export const ProductButtons = ({className, style}: IProps) => {
 				-
 			</button>
 			<div className={styles.countLabel}> {counter} </div>
-			<button className={styles.buttonAdd} onClick={() => increaseBy(1)}>
+			<button className={`${styles.buttonAdd} ${isMaxReached() && styles.disabled}`} onClick={() => increaseBy(1)}>
 				+
 			</button>
 		</div>

@@ -20,54 +20,38 @@ const ShoppingPages = () => {
 					product={product}
 					key={product.id} 
 					className="bg-dark text-white"
-					// onChange={onProductOnchange}
-					// value={shoppingCart[product.id]?.count || 0}
 					initialValues={{
 						count: 4,
 						maxCount: 10
 					}}
 				>
-					<ProductCard.Image 
-						img={product.img} 
-						className="custom-image" 
-					/>
-					<ProductCard.Title 
-						title={product.title} 
-						className="text-white text-bold"
-					/>
-					<ProductCard.Buttons 
-						className="text-white custom-buttons"
-					/>
-				</ProductCard>
-
-				{/* <div className='shopping-cart'>
 					{
-						Object.entries(shoppingCart).map(([id, product]) => (
-							<ProductCard 
-								product={product} 
-								key={id} 
-								style={{
-									width: '100px'
-								}}
-								value={product.count}
-								onChange={onProductOnchange} 
-								className="bg-dark text-white">
+						({reset, increaseBy, count, maxCount, isMaxCountReached})=> (
+							<>
 								<ProductCard.Image 
 									img={product.img} 
 									className="custom-image" 
 								/>
+								<ProductCard.Title 
+									title={product.title} 
+									className="text-white text-bold"
+								/>
 								<ProductCard.Buttons 
 									className="text-white custom-buttons"
-									style={{
-										display: 'flex',
-										justifyContent: 'center'
-									}}
 								/>
-							</ProductCard>
-						))
+
+								<button onClick={reset} >Reset</button>
+								<button onClick={()=>increaseBy(+2)} >Incrementar +2</button>
+								{
+									isMaxCountReached && <button onClick={()=>increaseBy(-2)} >Decrementar -2</button>
+								}
+								
+								<span >Count: {count} - MaxCount: {maxCount}</span>
+							</>
+						)
 					}
-				</div> */}
-				
+				</ProductCard>
+
 			</div>
 		</div>
 	);

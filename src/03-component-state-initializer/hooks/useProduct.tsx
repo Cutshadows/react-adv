@@ -27,6 +27,10 @@ export const useProduct = ({product, onChange, value = 0, initialValues}: HookPr
 	};
 
 
+	const reset = ()=>{
+		setCounter(initialValues?.count || 0);
+	};
+
 	useEffect(() => {
 		if(!isMounted.current){return;};
 		setCounter(value);
@@ -36,5 +40,11 @@ export const useProduct = ({product, onChange, value = 0, initialValues}: HookPr
 		isMounted.current = true;
 	}, []);
 
-	return {counter, increaseBy};
+	return { 
+		counter, 
+		increaseBy,
+		isMaxCountReached: !!initialValues?.count && initialValues.maxCount === counter,
+		maxCount: initialValues?.maxCount || 0,
+		reset 
+	};
 };

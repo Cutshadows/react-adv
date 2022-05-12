@@ -4,7 +4,8 @@ import { Props as PropsImage } from "../components/ProductImage";
 import { Props as PropsTitle } from "../components/ProductTitle";
 
 export interface ProductCardProps {
-	children?: ReactElement | ReactElement[];
+	// children?: ReactElement | ReactElement[];
+	children: (args:ProductsCardHandlers) => JSX.Element;
 	className?: string;
 	product: Product;
 	style?: React.CSSProperties;
@@ -21,6 +22,7 @@ export interface Product {
 
 export interface ProductState {
 	counter: number;
+	maxCount?: number;	
 	product: Product;
 	increaseBy: (value: number) => void;
 }
@@ -44,4 +46,13 @@ export interface onChangeArgs {
 export interface InitialValues {
 	count?: number;
 	maxCount?: number;
+}
+
+export interface ProductsCardHandlers {
+	count: number;
+	isMaxCountReached: boolean;
+	maxCount?: number;
+	product: Product;
+	increaseBy: (value: number) => void;
+	reset: () => void;
 }
