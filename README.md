@@ -44,3 +44,45 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+```
+import { ProductCard, ProductImage, ProductTitle, ProductButtons } from 'do-product-card';
+```
+
+```
+  <ProductCard 
+     product={product}
+     key={product.id} 
+     className="bg-dark text-white"
+     initialValues={{
+      count: 4,
+      maxCount: 10
+     }}
+    >
+     {
+      ({reset, increaseBy, count, maxCount, isMaxCountReached})=> (
+       <>
+        <ProductCard.Image 
+         img={product.img} 
+         className="custom-image" 
+        />
+        <ProductCard.Title 
+         title={product.title} 
+         className="text-white text-bold"
+        />
+        <ProductCard.Buttons 
+         className="text-white custom-buttons"
+        />
+
+        <button onClick={reset} >Reset</button>
+        <button onClick={()=>increaseBy(+2)} >Incrementar +2</button>
+        {
+         isMaxCountReached && <button onClick={()=>increaseBy(-2)} >Decrementar -2</button>
+        }
+        
+        <span >Count: {count} - MaxCount: {maxCount}</span>
+       </>
+      )
+     }
+    </ProductCard>
+```
