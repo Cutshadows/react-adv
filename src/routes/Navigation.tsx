@@ -5,7 +5,6 @@ import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import logo from '../logo.svg';
 import { routes } from './routes';
 
-// import { LazyPage1, LazyPage2, LazyPage3 } from '../01-lazyload/pages';
 
 export const Navigation = () => {
 	return (
@@ -36,9 +35,6 @@ export const Navigation = () => {
 							)
 							)
 						};
-						{/* <Route path="lazy2" element={ <LazyPage2 /> } /> */}
-						{/* <Route path="lazy3" element={ <LazyPage3 /> } /> */}
-
 						<Route path="/*" element={ <Navigate to={routes[0].to } replace /> } />
 					</Routes>
 				</div>
