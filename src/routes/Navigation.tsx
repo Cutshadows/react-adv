@@ -12,7 +12,9 @@ import {
 	FormikPages,
 	FormikYupPages,
 	FormikComponents,
-	FormikAbstract 
+	FormikAbstract,
+	RegisterFormikPage,
+	DinamycForm 
 } from '../03-forms/pages';
 
 
@@ -50,13 +52,21 @@ export const Navigation = () => {
 			<li>
               <Link to="/formik-abstract" className="nav-active" >Formik Abstract</Link>
             </li>
+			<li>
+              <Link to="/register-formik" className="nav-active" >Register Formik Page</Link>
+            </li>
+			<li>
+              <Link to="/dinamyc-form" className="nav-active" >Dinamyc Form</Link>
+            </li>
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Routes>
+			<Route path="/dinamyc-form" element={<DinamycForm />} />
 			<Route path="/register" element={<RegisterPage />} />
+			<Route path="/register-formik" element={<RegisterFormikPage />} />
 			<Route path="/formik-basic" element={<FormikPages />} />
 			<Route path="/formik-yup" element={<FormikYupPages />} />
 			<Route path="/formik-components" element={<FormikComponents />} />
